@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="category_target_list">
+            <field name="name">category_target list</field>
+            <field name="model">category.target</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="category_id"/>
+                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="category_target_action_window">
+            <field name="name">Category Target</field>
+            <field name="res_model">category.target</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- Top menu item -->
+        <menuitem name="Category Target" id="category_target_menu_root"/>
+        <!-- menu categories -->
+        <menuitem name="Category Target" id="category_target_menu_1" parent="category_target_menu_root"/>
+        <menuitem name="Category Target"
+                  id="category_target_menu"
+                  parent="category_target_menu_1"
+                  sequence="1"
+                  action="category_target_action_window"
+        />
+
+    </data>
+</odoo>

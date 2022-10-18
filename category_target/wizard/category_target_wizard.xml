@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="view_category_target_wizard_form" model="ir.ui.view">
+            <field name="name">Wizard</field>
+            <field name="model">category.target.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard Form">
+                    <group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+
+                    </group>
+
+                    <footer>
+                        <button string="Print" class="btn-primary" name="print_pdf_report" type="object"/>
+                        or
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_category_target_wizard" model="ir.actions.act_window">
+            <field name="name">Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">category.target.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_category_target_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_category_target_wizard"
+                  name="Category Wizard"
+                  parent="category_target.category_target_menu_1"
+                  sequence="2"
+                  action="action_category_target_wizard"/>
+
+    </data>
+</odoo>

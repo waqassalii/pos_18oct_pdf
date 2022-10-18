@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <record id="view_time_settlement_config_setting_form" model="ir.ui.view">
+            <field name="name">Settings</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='autocomplete_address']" position="inside">
+
+                    <div class="o_setting_right_pane">
+							<label for="time_settlement" string="Time Settlement"/>
+							<div class="text-muted">
+							</div>
+						</div>
+                    <div class="o_setting_right_pane">
+                        <field name="time_settlement" widget="float_time"/>
+                        <button name="get_time_value" type="object" string="call me" class="btn-primary"/>
+                    </div>
+
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

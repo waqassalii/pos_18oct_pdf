@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="custom_pos_order_inherit_form_view" model="ir.ui.view">
+		<field name="name">pos.order.form.view</field>
+		<field name="model">pos.order</field>
+		<field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page string="FBR Info">
+					<group>
+						<field name="is_registered" readonly="1"/>
+						<field name="invoice_no" readonly="1"/>
+						<field name="return_invoice_number" attrs="{'invisible': [('state', '!=', 'returned')]}"/>
+						<field name="qr_image" widget="image" style="width: 120px; height: 120	px;"/>
+					</group>
+				</page>
+			</xpath>
+
+		</field>
+	</record>
+	<record id="custom_view_pos_order_filter_inherit" model="ir.ui.view">
+		<field name="name">pos.order.list.select.inherit</field>
+		<field name="model">pos.order</field>
+		<field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
+		<field name="arch" type="xml">
+
+			<field name="name" position="after">
+				<field name="is_registered"/>
+			</field>
+			<xpath expr="//filter[@name='posted']" position="after">
+				<filter string="Failed FBR Request" name="fbr" domain="[('is_registered','=',False)]"/>
+			</xpath>
+		</field>
+	</record>
+    </data>
+</odoo>

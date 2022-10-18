@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+	<t t-extend="OrderReceipt">
+		<t t-jquery=".pos-receipt-contact" t-operation="after">
+			<div class="fbr-inv-num">
+                FBR Invoice Number: <t t-esc="inv_num || ''"/><br />
+            </div>
+<!--			<table>-->
+<!--				<td width='50%'>-->
+<!--					<br/>-->
+<!--					asdf-->
+<!--					<img style="margin-bottom:5px;width:80px;height:80px;border-radius:50%;" t-att-src="'data:image/png;base64,'+qr_image"/>-->
+<!--				</td>-->
+<!--				<td width='50%'>-->
+<!--				</td>-->
+<!--			</table>-->
+		</t>
+		<t t-jquery=".before-footer" t-operation="before">
+			<table>
+				<td width='99%'>
+					<br/>
+					<img style="margin-bottom:5px;width:80px;height:80px;border-radius:50%;" t-att-src="'data:image/png;base64,'+qr_image"/>
+				</td>
+				<td width='1%'>
+				</td>
+			</table>
+		</t>
+	</t>
+</templates>
